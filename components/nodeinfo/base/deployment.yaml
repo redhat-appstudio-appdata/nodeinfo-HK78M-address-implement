@@ -11,7 +11,7 @@ metadata:
   name: nodeinfo
   namespace: cjerolim-tenant
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: nodejs-app
@@ -25,7 +25,10 @@ spec:
         app.kubernetes.io/instance: nodeinfo
     spec:
       containers:
-      - image: quay.io/redhat-appstudio/user-workload:cjerolim-tenant-nodeinfo
+      - env:
+        - name: asdf
+          value: adsf-value
+        image: quay.io/redhat-appstudio/user-workload:cjerolim-tenant-nodeinfo
         name: my-nodejs
         ports:
         - containerPort: 3001
